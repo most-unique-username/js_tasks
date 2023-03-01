@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      if ("0") {// любая непустая строка = true
+        alert("Привет");
+      }
+    </script>
+
+    <!-- Задача 2   -->
+    <script>
+      let company_name = prompt("Какое «официальное» название JavaScript?", "");
+      if (company_name == "ECMAScript") {
+        alert("Верно!");
+      } else {
+        alert("Не знаете? ECMAScript!");
+      }
+    </script>
+
+    <!-- Задача 3   -->
+    <script>
+      let number = prompt("Введите число:", 0);
+      if (number == 0) {
+        alert(0);
+      } else if (number > 0) {
+        alert(1);
+      } else {
+        alert(-1);
+      }
+    </script>
+
+    <!-- Задача 4   -->
+    <script>
+      let result = (a + b < 4) ? "Мало" : "Много";
+    </script>
+
+    <!-- Задача 5   -->
+    <script>
+      let login = prompt("Введите логин:", "");
+      let message = (login == "Сотрудник") ? "Привет" :
+        (login == "Директор") ? "Здравствуйте" :
+        (login == "") ? "Нет логина" :
+        "";
+    </script>
+
+  </body>
+</html>
