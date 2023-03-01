@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->       
+    <script>
+      let c = {}
+      function A() {return c;}
+      function B() {return c;}
+      
+      let a = new A();
+      let b = new B();
+      
+      alert( a == b );//true: должны ссылаться на один объект
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function Calculator() {
+        this.read = function() {
+          this.thirst_number = +prompt("Первое число", 0);
+          this.second_number = +prompt("Второе число", 0);
+        };
+        this.sum = function() {
+          return this.thirst_number + this.second_number;
+        };
+        this.mul = function() {
+          return this.thirst_number * this.second_number;
+        };
+      };
+
+      let calculator = new Calculator();
+
+      calculator.read();
+      alert(calculator.sum());
+      alert(calculator.mul());
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      function Accumulator(startingValue) {
+        this.value = startingValue;
+        this.read = function() {
+          this.value += +prompt("Новое число", 0);
+        };
+      }
+
+      let accumulator = new Accumulator(1);
+      accumulator.read();
+      accumulator.read();
+      alert(accumulator.value);
+    </script>
+
+  </body>
+</html>

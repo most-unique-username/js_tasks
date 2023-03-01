@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      let user = {};
+      user.name = "John";
+      user.surname = "Smith";
+      user.name = "Pete";
+      delete user.name;
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function isEmpty(obj) {
+        for (let key in obj) return false;
+        return true;
+      }
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      const user = {
+        name: "John",
+      };
+      // это будет работать?
+      user.name = "Pete";//будет работать, константа user не меняется, меняется значение ее свойства
+    </script>
+
+    <!-- Задача 4   -->    
+    <script>
+      function sum_value_object(obj) {
+        let sum = 0;
+        for (let key in obj) {
+          sum += obj[key];
+        }
+        return sum;
+      }
+
+      let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130,
+      }
+
+      let sum_salaries = sum_value_object(salaries);
+      alert(sum_salaries);
+    </script>
+
+    <!-- Задача 5   -->    
+    <script>
+      function multiplyNumeric(obj) {
+        for (let key in obj) {
+          if (typeof obj[key] == "number") obj[key] *= 2;
+        }
+      }
+
+      let menu = {
+        width: 200,
+        height: 300,
+        title: "My menu",
+      };
+      
+      multiplyNumeric(menu);
+
+      alert(`width = ${menu.width}, height = ${menu.height}, title = ${menu.title}`);
+    </script>
+
+  </body>
+</html>

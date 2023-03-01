@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->       
+    <script>
+      function makeUser() {
+        return {
+          name: "John",
+          ref: this,
+        };
+      }
+      
+      let user = makeUser();
+      
+      alert( user.ref.name );//ошибка, но почему?
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      let calculator = {
+        read() {
+          this.thirst_number = +prompt("Первое число", 0);
+          this.second_number = +prompt("Второе число", 0);
+        },
+        sum() {
+          return this.thirst_number + this.second_number;
+        },
+        mul() {
+          return this.thirst_number * this.second_number;
+        },
+      };
+
+      calculator.read();
+      alert(calculator.sum());
+      alert(calculator.mul());
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      let ladder = {
+        step: 0,
+        up() {
+          this.step++;
+          return this;
+        },
+        down() {
+          this.step--;
+          return this;
+        },
+        showStep() {
+          alert(this.step);
+          return this;
+        }
+      };
+
+      ladder.up().up().down().showStep().down().showStep(); 
+    </script>
+
+  </body>
+</html>

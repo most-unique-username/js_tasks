@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      let date = new Date(2012, 1, 20, 3, 12);
+      alert(date);
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function getWeekDay(date) {
+        const week_day = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+        return week_day[date.getDay()];
+      }
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      function getLocalDay(date) {
+        let week_day_number = date.getDay();
+        return week_day_number == 0 ? week_day_number + 7 : week_day_number;
+      }
+    </script>
+
+    <!-- Задача 4   -->    
+    <script>
+      function getDateAgo(date, days) {
+        let new_date = new Date(date);
+        new_date.setDate(date.getDate() - days);
+        return new_date.getDate();
+      }
+    </script>
+
+    <!-- Задача 5   -->    
+    <script>
+      function getLastDayOfMonth(year, month) {
+        let date = new Date(year, month + 1, 0);        
+        return date.getDate();
+      }
+    </script>
+
+    <!-- Задача 6   -->    
+    <script>
+      function getSecondsToday() {
+        let now_date = new Date();
+        let start_today = new Date(now_date.toDateString());
+        //let seconds = now_date.getHours() * 3600 + now_date.getMinutes() * 60 + now_date.getSeconds();
+        return (+now_date - +start_today) / 1000;
+      }
+    </script>
+
+    <!-- Задача 7   -->    
+    <script>
+      function getSecondsToTomorrow() {
+        let now = new Date();
+        let end_today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24);
+        return (+end_today - +now) / 1000;
+      }
+    </script>
+
+    <!-- Задача 8   -->    
+    <script>
+      function formatDate(date) {
+        let now = new Date();
+        let seconds = (+now - +date) / 1000;
+        if (seconds < 1) return "прямо сейчас";
+        let minutes = seconds / 60;
+        if (minutes < 1) return `${Math.floor(seconds)} сек. назад`;
+        let hours = seconds / 3600;
+        if (hours < 1) return `${Math.floor(minutes)} мин. назад`;
+        let date_arr = [
+          "0"+ date.getDate(),
+          "0"+ date.getMonth(),
+          "0"+ date.getFullYear(),
+          "0"+ date.getHours(),
+          "0"+ date.getMinutes()];
+        date_arr = date_arr.map(item => item.slice(-2));
+        return `${date_arr[0]}.${date_arr[1]}.${date_arr[2]} ${date_arr[3]}:${date_arr[4]}`;
+      }
+    </script>
+
+  </body>
+</html>

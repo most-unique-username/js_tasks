@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function camelize(str) {
+      let str_array = str.split("");
+      for (let i = 1; i < str_array.length; i++) {
+        if (str_array[i - 1] == "-") {
+          str_array[i].toUpperCase();
+          str_array.splice(i - 1, 1);
+          i--;
+        }
+      }
+      str = str_array.join();
+      return str;
+    }
+
+    function camelize_map(str) {
+      return str.split("-")
+        .map(word => word == "" ? word : word[0].toUpperCase() + word.slice(1))
+        .join("");
+    }
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    function filterRange(arr, a, b) {
+      return arr.filter(number => number >= a && number <= b);
+    }
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    function filterRangeInPlace(arr, a, b) {
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < a || arr[i] > b) {
+          arr.splice(i, 1);
+          i--;
+        }
+      }
+    }
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    let arr = [5, 2, 1, -10, 8];
+    arr.sort((a, b) => b - a);
+    alert(arr);
+  </script>
+
+  <!-- Задача 5   -->
+  <script>
+    function copySorted(arr) {
+      return arr.slice().sort();
+    }
+  </script>
+
+  <!-- Задача 6   -->
+  <script>
+    function Calculator() {
+      this.calculate = function (str) {
+        let arr = str.split(" ");
+        let a = +arr[0];
+        let b = +arr[2];
+        let math = arr[1];
+        return this.operators[math](a, b);
+      };
+      this.operators = {
+        "-": (a, b) => a - b,
+        "+": (a, b) => a + b,
+      };
+      this.addMethod = function (name, func) {
+        this.operators[name] = func;
+      };
+    };
+  </script>
+
+  <!-- Задача 7   -->
+  <script>
+    let vasya = { name: "Вася", age: 25 };
+    let petya = { name: "Петя", age: 30 };
+    let masha = { name: "Маша", age: 28 };
+
+    let users = [vasya, petya, masha];
+
+    let names = users.map(user => user.name);
+
+    alert(names);
+  </script>
+
+  <!-- Задача 8   -->
+  <script>
+    let vasya2 = { name: "Вася", surname: "Пупкин", id: 1 };
+    let petya2 = { name: "Петя", surname: "Иванов", id: 2 };
+    let masha2 = { name: "Маша", surname: "Петрова", id: 3 };
+
+    let users2 = [vasya, petya, masha];
+    let usersMapped = users.map(user => ({ fullName: (user.name + " " + user.surname), id: user.id }));
+
+    /*
+    usersMapped = [
+      { fullName: "Вася Пупкин", id: 1 },
+      { fullName: "Петя Иванов", id: 2 },
+      { fullName: "Маша Петрова", id: 3 }
+    ]
+    */
+
+    alert(usersMapped[0].id) // 1
+    alert(usersMapped[0].fullName) // Вася Пупкин
+  </script>
+
+  <!-- Задача 9   -->
+  <script>
+    function sortByAge(users) {
+      users.sort((a, b) => a.age - b.age);
+    }
+  </script>
+
+  <!-- Задача 10  -->
+  <script>
+    function shuffle(array) {
+      array.sort(() => Math.random() - 0.5);
+    }
+  </script>
+
+  <!-- Задача 11  -->
+  <script>
+    function getAverageAge(users) {
+      let sum = 0;
+      users.forEach(user => sum += user.age);
+      return sum / users.length;
+    }
+  </script>
+
+  <!-- Задача 12  -->
+  <script>
+    function unique(arr) {
+      let unique_arr = [];
+      for (let item of arr) {
+        if (!unique_arr.includes(item)) unique_arr.push(item);
+      }
+      return unique_arr;
+    }
+  </script>
+
+  <!-- Задача 13  -->
+  <script>
+    function groupById(arr) {
+      return arr.reduce((groupById, item) => {
+        groupById[item.id] = item;
+        return groupById;
+      }, {});
+    }
+
+    let users3 = [
+      { id: 'john', name: "John Smith", age: 20 },
+      { id: 'ann', name: "Ann Smith", age: 24 },
+      { id: 'pete', name: "Pete Peterson", age: 31 },
+    ];
+
+    let usersById = groupById(users3);
+
+    /*
+    // после вызова у нас должно получиться:
+
+    usersById = {
+    john: {id: 'john', name: "John Smith", age: 20},
+    ann: {id: 'ann', name: "Ann Smith", age: 24},
+    pete: {id: 'pete', name: "Pete Peterson", age: 31},
+    }
+    */
+  </script>
+
+</body>
+
+</html>

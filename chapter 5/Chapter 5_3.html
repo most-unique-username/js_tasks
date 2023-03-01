@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      function ucFirst(str) {
+        if (!str) return str;
+        let first_char = str[0].toUpperCase();
+        return first_char + str.slice(1);
+      }
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function checkSpam(str) {
+        let str_lower_case = str.toLowerCase();
+        return str_lower_case.includes("viagra") || str_lower_case.includes("xxx")
+      }
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      function truncate(str, maxlength) {
+        if (str.length <= maxlength) return str;
+        return str.slice(0, maxlength - 1) + "…";
+      }
+    </script>
+
+    <!-- Задача 4   -->    
+    <script>
+      function extractCurrencyValue(str) {
+        let first_number;
+        for (let i = 0; i < str.length; i++) {
+          first_number = str[i]
+          if (!isNaN(first_number)) return parseFloat(str.slice(i));
+        }
+        return 0;
+      }
+    </script>
+
+  </body>
+</html>

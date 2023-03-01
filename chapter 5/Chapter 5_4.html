@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      let fruits = ["Яблоки", "Груша", "Апельсин"];
+
+      // добавляем новое значение в "копию"
+      let shoppingCart = fruits;
+      shoppingCart.push("Банан");
+
+      // что в fruits?
+      alert( fruits.length );//4
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function CenterPosition (array) {
+        return Math.round(array.length / 2 - 0.5);
+      }
+      let styles = ["Джаз", "Блюз"];
+      styles.push("Рок-н-ролл");
+      let center_position = CenterPosition(styles);
+      styles[center_position] = "Классика";
+      alert(styles.shift());
+      styles.unshift("Рэп", "Регги");
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      let arr = ["a", "b"];
+
+      arr.push(function() {
+        alert(this);
+      });
+      
+      arr[2]();//arr: a, b, function
+    </script>
+
+    <!-- Задача 4   -->    
+    <script>
+      function sumInput() {
+        let prompt_numbers = [];
+        let sum = 0;
+        let prompt_answer;
+        do {
+          prompt_answer = prompt("Введите число", "");
+          if (prompt_answer == "" || prompt_answer == null || isNaN(prompt_answer)) {
+            break;
+          }
+          prompt_numbers.push(+prompt_answer);
+          sum += +prompt_answer;
+        } while (true)
+        return sum;
+      }
+    </script>
+
+    <!-- Задача 5   -->    
+    <script>
+      function getMaxSubSum(arr) {
+        let max_sum = 0;
+        let sum;
+        let length = arr.length;
+        for (let i = 0; i < length; i++) {
+          sum = 0;
+          for (let j = i; j < length; j++) {
+            sum += arr[j];
+            if (sum >= max_sum) {
+              max_sum = sum;
+            }
+          }
+        }
+        return max_sum;
+      }
+    </script>
+
+  </body>
+</html>

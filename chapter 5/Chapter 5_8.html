@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      let messages = [
+        {text: "Hello", from: "John"},
+        {text: "How goes?", from: "John"},
+        {text: "See you soon", from: "Alice"}
+      ];
+      
+      let read_message = new WeakSet();
+
+      for (let message of messages) {
+        read_message.add(message);
+      }
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      let messages2 = [
+        {text: "Hello", from: "John"},
+        {text: "How goes?", from: "John"},
+        {text: "See you soon", from: "Alice"}
+      ];
+      
+      let read_message_map = new WeakMap();
+      let date;
+
+      for (let message of messages) {
+        date = "";
+        read_message.set(message, date);
+      }
+    </script>
+
+  </body>
+</html>

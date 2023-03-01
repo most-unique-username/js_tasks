@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      function unique(arr) {
+        return Array.from(new Set(arr));
+      }
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function aclean(arr) {
+        let unique_anagram = new Map();
+        let sort_word;
+        for (let word of arr) {
+          sort_word = word.toLowerCase().split("").sort().join("");
+          if (!unique_anagram.has(sort_word)) {
+            unique_anagram.set(sort_word, word);
+          }
+        }
+        return Array.from(unique_anagram.values());
+      }
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      let map = new Map();
+      
+      map.set("name", "John");
+      
+      let keys = Array.from(map.keys());
+      
+      // Error: keys.push is not a function
+      // Ошибка: keys.push -- это не функция
+      keys.push("more");
+    </script>
+
+  </body>
+</html>

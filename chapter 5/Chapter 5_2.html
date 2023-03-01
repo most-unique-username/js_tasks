@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      let first_number = +prompt("Первое число", 0);
+      let second_number = +prompt("Второе число", 0);
+      let sum = first_number + second_number;
+      alert(sum);
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      alert((6.35 * 10).toFixed()/10);
+    </script>
+
+    <!-- Задача 3   -->    
+    <script>
+      function readNumber() {
+        let number;
+        do {
+          number = prompt("Введите число", "");
+          if (number == "" || number == null) return null;
+        } while (!isFinite(number))
+        return +number;
+      }
+    </script>
+
+    <!-- Задача 4   -->    
+    <script>
+      let i = 0;
+      while (i != 10) {
+        i += 0.2;
+      }//неточные вычисления
+    </script>
+
+    <!-- Задача 5   -->    
+    <script>
+      function random(min, max) {
+        return (max-min) * Math.random() + min;
+      }
+    </script>
+
+    <!-- Задача 6   -->    
+    <script>
+      function randomInteger(min, max) {
+        min = min - 0.5;
+        max = max + 0.5;
+        return Math.round((max-min) * Math.random() + min);
+      }
+    </script>
+
+  </body>
+</html>

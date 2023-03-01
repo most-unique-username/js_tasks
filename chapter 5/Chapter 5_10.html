@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <!-- Задача 1   -->    
+    <script>
+      let user = {name: "John", years: 30};
+      let {name, years : age, isAdmin = false} = user
+    </script>
+
+    <!-- Задача 2   -->    
+    <script>
+      function topSalary(salaries) {
+        let top_salary_name = null;
+        let top_salary = 0;
+        for (let [name, salary] of Object.entries(salaries)) {
+          if (salary > top_salary) {
+            top_salary = salary;
+            top_salary_name = name;
+          }
+
+        }
+        return top_salary_name;
+      }
+    </script>
+
+  </body>
+</html>
