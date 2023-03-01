@@ -5,31 +5,6 @@
   </head>
   <body>
 
-    <!-- Задача 1   -->    
-    <script>
-      alert(null || 2 || undefined);//2
-    </script>
-
-    <!-- Задача 2   -->
-    <script>
-      alert(alert(1) || 2 || alert(3));//1, 2
-    </script>
-
-    <!-- Задача 3   -->
-    <script>
-      alert(1 && null && 2);//null
-    </script>
-
-    <!-- Задача 4   -->
-    <script>
-      alert(alert(1) && alert(2));//1, undefined
-    </script>
-
-    <!-- Задача 5   -->
-    <script>
-      alert( null || 2 && 3 || 4 );//null || 2 && 3 || 4 = null || 2(true) && 3(true) || 4 = null || 3(true) || 4 = 3
-    </script>
-
     <!-- Задача 6   -->
     <script>
       let age = 20;
@@ -49,13 +24,6 @@
       if(age < 14 || age > 90){
         result = true;
       }
-    </script>
-
-    <!-- Задача 8   -->
-    <script>
-      if (-1 || 0) alert("first");//-1, выполнится
-      if (-1 && 0) alert("second");//0, не выполнится
-      if (null || -1 && 1) alert("third");//1, выполнится
     </script>
 
     <!-- Задача 9   -->
