@@ -28,25 +28,7 @@
 
     // ваш метод toString в действии
     alert(dictionary); // "apple,__proto__"
-  </script>
-
-  <!-- Задача 2   -->
-  <script>
-    function Rabbit(name) {
-      this.name = name;
-    }
-
-    Rabbit.prototype.sayHi = function () {
-      alert(this.name);
-    };
-
-    let rabbit = new Rabbit("Rabbit");
-
-    rabbit.sayHi();//Rabbit
-    Rabbit.prototype.sayHi();//Rabbit.prototype
-    Object.getPrototypeOf(rabbit).sayHi();//Rabbit.prototype
-    rabbit.__proto__.sayHi();//Rabbit.prototype
-  </script>
+  </script>  
 
 </body>
 
