@@ -5,45 +5,7 @@
   <meta charset="utf-8">
 </head>
 
-<body>
-
-  <!-- Задача 1   -->
-  <script>
-    function f() {
-      alert(this); // ?
-    }
-
-    let user = {
-      g: f.bind(null)
-    };
-
-    user.g();//null
-  </script>
-
-  <!-- Задача 2   -->
-  <script>
-    function f() {
-      alert(this.name);
-    }
-
-    f = f.bind({ name: "Вася" }).bind({ name: "Петя" });
-
-    f();//Петя нет Вася!!!
-  </script>
-
-  <!-- Задача 3   -->
-  <script>
-    function sayHi() {
-      alert(this.name);
-    }
-    sayHi.test = 5;
-
-    let bound = sayHi.bind({
-      name: "Вася"
-    });
-
-    alert(bound.test);//5 нет undefined!!!
-  </script>
+<body>  
 
   <!-- Задача 4   -->
   <script>
