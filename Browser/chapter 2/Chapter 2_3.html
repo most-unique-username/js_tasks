@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <style>
+    body {
+      height: 2000px;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+
+    th {
+      cursor: pointer;
+    }
+
+    th:hover {
+      background: yellow;
+    }
+
+    #container {
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    .pane {
+      position: relative;
+      border: 1px solid green;
+      padding: 10px;
+    }
+
+    .remove-button {
+      position: absolute;
+      top: 0;
+      color: darkred;
+      right: 10px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .tooltip {
+      position: fixed;
+      padding: 10px 20px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <p id="opopop">ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+  <p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+
+  <button data-tooltip="эта подсказка должна быть длиннее, чем элемент">Короткая кнопка</button>
+  <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+
+  <p>Прокрутите страницу, чтобы кнопки оказались у верхнего края, а затем проверьте правильно ли выводятся подсказки.
+  </p>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul class="tree" id="tree">
+    <li>Животные
+      <ul>
+        <li>Млекопитающие
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li>Другие
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Рыбы
+      <ul>
+        <li>Аквариумные
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+        </li>
+        <li>Морские
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <div id="container">
+    <div class="pane">
+      <h3>Лошадь</h3>
+      <p>Домашняя лошадь - животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой
+        лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+      <button class="remove-button">[x]</button>
+    </div>
+    <div class="pane">
+      <h3>Осёл</h3>
+      <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии
+        хозяйства
+        и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
+      <button class="remove-button">[x]</button>
+    </div>
+    <div class="pane">
+      <h3>Кошка</h3>
+      <p>Кошка, или домашняя кошка (лат. Félis silvéstris cátus), — домашнее животное, одно из наиболее популярных
+        (наряду
+        с собакой) "животных-компаньонов". С точки зрения научной систематики, домашняя кошка — млекопитающее семейства
+        кошачьих отряда хищных. Ранее домашнюю кошку нередко рассматривали как отдельный биологический вид.
+      </p>
+      <button class="remove-button">[x]</button>
+    </div>
+  </div>
+
+  <!-- Задача 1   -->
+  <script>
+    container.onclick = function (event) {
+      let remove_btn = event.target.closest("button");
+      if (!remove_btn) return;
+      if (!container.contains(remove_btn)) return;
+      remove_btn.parentElement.hidden = true;
+    };
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    tree.onclick = function (event) {
+      let li = event.target.closest("li");
+      if (!li) return;
+      if (!tree.contains(li)) return;
+      li.firstElementChild.hidden = !li.firstElementChild.hidden;
+    };
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    grid.onclick = function (event) {
+      let th = event.target.closest("th");
+      let i = th.cellIndex;
+
+      if (!th) return;
+      if (!grid.contains(th)) return;
+
+      let type = th.dataset.type;
+      let rows = Array.from(grid.rows).slice(1);
+
+      switch (type) {
+        case "number":
+          rows = rows.sort((rowA, rowB) => rowA.cells[i].innerHTML - rowB.cells[i].innerHTML);
+          break;
+        case "string":
+          rows = rows.sort((rowA, rowB) => rowA.cells[i].innerHTML > rowB.cells[i].innerHTML ? 1 : -1);
+          break;
+      }
+
+      grid.tBodies[0].append(...rows);
+    };
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    let tooltip = null;
+    document.addEventListener("mouseover", (event) => createTooltip(event));
+    document.addEventListener("mouseout", () => removeTooltip());
+
+    function createTooltip(event) {
+      if (event.target.tagName != "BUTTON") return;
+      let btn = event.target;
+      tooltip = document.createElement("div");
+      tooltip.className = "tooltip";
+      document.body.append(tooltip);
+      tooltip.innerHTML = btn.dataset.tooltip;
+      let top = btn.offsetTop - window.pageYOffset - tooltip.offsetHeight - 10;
+      if (top < 0) top += tooltip.offsetHeight + btn.offsetHeight + 20;
+      tooltip.style.top = top + "px";
+      tooltip.style.left = btn.offsetLeft + "px";
+    };
+
+    function removeTooltip() {
+      if (!tooltip) return;
+      tooltip.remove();
+      tooltip = null;
+    };
+  </script>
+
+</body>
+
+</html>

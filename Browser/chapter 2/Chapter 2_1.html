@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <style>
+    body {
+      height: 2000px;
+    }
+
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+    }
+
+    #ball {
+      width: 40px;
+      height: 40px;
+    }
+
+    .hide::before {
+      content: "▶";
+      color: green;
+    }
+
+    .uncover::before {
+      content: "▼";
+      color: green;
+    }
+
+    .pane {
+      position: relative;
+    }
+
+    .remove-button {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+
+    .icon-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .arrow {
+      padding: 0;
+      background: #ddd;
+      border-radius: 15px;
+      border: 1px solid gray;
+      font-size: 24px;
+      line-height: 24px;
+      color: #444;
+      display: block;
+    }
+
+    .arrow:focus {
+      outline: none;
+    }
+
+    .arrow:hover {
+      background: #ccc;
+      cursor: pointer;
+    }
+
+    .icon-container {
+      width: 390px;
+      height: 130px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .icon-list {
+      height: 130px;
+      width: 9999px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0;
+      position: absolute;
+    }
+
+    .icon-list img {
+      width: 130px;
+      height: 130px;
+      display: block;
+    }
+
+    .icon-list li {
+      display: inline-block;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="icon-box">
+    <button class="arrow arrow-left">⇦</button>
+    <div class="icon-container">
+      <ul class="icon-list">
+        <li><img src="https://ru.js.cx/carousel/1.png"></li>
+        <li><img src="https://ru.js.cx/carousel/2.png"></li>
+        <li><img src="https://ru.js.cx/carousel/3.png"></li>
+        <li><img src="https://ru.js.cx/carousel/4.png"></li>
+        <li><img src="https://ru.js.cx/carousel/5.png"></li>
+        <li><img src="https://ru.js.cx/carousel/6.png"></li>
+        <li><img src="https://ru.js.cx/carousel/7.png"></li>
+        <li><img src="https://ru.js.cx/carousel/8.png"></li>
+        <li><img src="https://ru.js.cx/carousel/9.png"></li>
+        <li><img src="https://ru.js.cx/carousel/10.png"></li>
+      </ul>
+    </div>
+    <button class="arrow arrow-right">⇨</button>
+  </div>
+
+  <button class="remove-button">[x]</button>
+
+  <div>
+    <div class="pane">
+      <h3>Лошадь</h3>
+      <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой
+        лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+    </div>
+    <div class="pane">
+      <h3>Осёл</h3>
+      <p>Домашний осёл (лат. Equus asinus asinus), или ишак, — одомашненный подвид дикого осла (Equus asinus), сыгравший
+        важную историческую роль в развитии хозяйства и культуры человека и по-прежнему широко в хозяйстве многих
+        развивающихся стран.</p>
+    </div>
+    <div class="pane">
+      <h3>Кошка</h3>
+      <p>Кошка, или домашняя кошка (лат. Felis silvestris catus), — домашнее животное, одно из наиболее
+        популярных(наряду
+        с собакой) «животных-компаньонов». Являясь одиночным охотником на грызунов и других мелких животных, кошка —
+        социальное животное, использующее для общения широкий диапазон звуковых сигналов.</p>
+    </div>
+  </div>
+
+  <p id="listName" class="hide">Сладости (нажми меня)!</p>
+  <ul id="list">
+    <li>Пирожное</li>
+    <li>Пончик</li>
+    <li>Мёд</li>
+  </ul>
+
+  <div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . .
+  </div>
+
+  <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+  <div id="text">Текст</div>
+
+  <input type="button" id="hiderSelf" value="Нажмите, чтобы спрятать" />
+
+  <!-- Задача 1   -->
+  <script>
+    hider.addEventListener("click", () => text.hidden = true);
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    hiderSelf.addEventListener("click", () => hiderSelf.hidden = true);
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    button.addEventListener("click", () => alert("1"));
+    button.removeEventListener("click", () => alert("1"));//не удалился
+    button.onclick = () => alert(2);//1 2
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    function coordsClick(event, elem, box) {
+      let box_left = box.offsetLeft + box.clientLeft;
+      let box_top = box.offsetTop + box.clientTop;
+      let elem_left = event.clientX - box_left - elem.offsetWidth / 2;
+      let elem_top = event.clientY - box_top - elem.offsetHeight / 2;
+
+      elem_left < 0 ? elem_left = 0 :
+        elem_left + elem.offsetWidth > box.clientWidth ? elem_left = box.clientWidth - elem.offsetWidth :
+          elem_left = elem_left;
+      elem_top < 0 ? elem_top = 0 :
+        elem_top - elem.offsetHeight > box.clientHeight ? elem_top = box.clientHeight - elem.offsetHeight :
+          elem_top = elem_top;
+
+      elem.style.left = elem_left + "px";
+      elem.style.top = elem_top + "px";
+    }
+
+    field.style.position = "relative";
+    ball.style.position = "absolute";
+
+    field.addEventListener("click", (event) => coordsClick(event, ball, field));
+  </script>
+
+  <!-- Задача 5   -->
+  <script>
+    function clickOnList(btn, elem) {
+      btn.className == "hide" ? btn.className = "uncover" : btn.className = "hide";
+      elem.hidden = !elem.hidden;
+    }
+
+    list.hidden = true;
+    listName.addEventListener("click", () => clickOnList(listName, list));
+  </script>
+
+  <!-- Задача 6   -->
+  <script>
+    let btn_close = document.querySelector(".remove-button");
+    let text_box = document.querySelectorAll(".pane");
+
+    for (let text of text_box) {
+      let btn_close_clone = btn_close.cloneNode(true);
+      btn_close_clone.addEventListener("click", () => text.hidden = true);
+      text.append(btn_close_clone);
+    }
+    btn_close.hidden = true;
+  </script>
+
+  <!-- Задача 7   -->
+  <script>
+    function clickOnList(direction, elem, box) {
+      if (direction == "right") {
+        elem.offsetLeft + box.clientWidth > 0 ?
+          elem.style.transform = 0 + "px" :
+          elem.style.left = elem.offsetLeft + box.clientWidth + "px";
+
+      } else if (direction == "left") {
+        let coords = elem.lastElementChild.getBoundingClientRect();
+        let distance_over = box.clientWidth - coords.right;
+
+        distance_over > 0 ?
+          elem.style.left = elem.style.left :
+          elem.style.left = elem.offsetLeft - box.clientWidth + "px";
+      }
+    }
+
+    let icon_list = document.querySelector(".icon-list");
+    let icon_container = document.querySelector(".icon-container");
+    let arrow_left = document.querySelector(".arrow-left");
+    let arrow_right = document.querySelector(".arrow-right");
+    arrow_right.addEventListener("click", () => clickOnList("left", icon_list, icon_container));
+    arrow_left.addEventListener("click", () => clickOnList("right", icon_list, icon_container));
+  </script>
+
+</body>
+
+</html>

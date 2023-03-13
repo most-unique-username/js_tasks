@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+    }
+
+    #elem {
+      width: 300px;
+      height: 200px;
+      border: 5px solid #E8C48F;
+      padding: 20px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    .
+    . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <div id="elem">
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+    текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст
+    текст
+  </div>
+
+  <!-- Задача 1   -->
+  <script>
+    let scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    let div = document.createElement("div");
+    div.style.overflowY = "scroll";
+    div.style.width = "100px";
+    div.style.height = "100px";
+    document.body.append(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    let ball_top = (field.clientHeight - ball.clientHeight) / 2;
+    let ball_left = (field.clientWidth - ball.clientWidth) / 2;
+    ball.style.top = ball_top + "px";
+    ball.style.left = ball_left + "px";
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    //getComputedStyle(elem).width разное для разных браузеров, зависит от box-sizing, может быть auto
+    //elem.clientWidth точно без прокрутки
+  </script>
+
+</body>
+
+</html>

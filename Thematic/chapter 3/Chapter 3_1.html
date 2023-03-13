@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <script>
+    async function getUsers(names) {
+      let url = "https://api.github.com/users/";
+      let result = null;
+      let response_names = [];
+      for (let name of names) {
+        let response = await fetch(url + name);
+        if (response.ok) result = await response.json();
+        response_names.push(result);
+        result = null;
+      }
+      let results = await Promise.all(response_names);
+      return results;
+    }
+  </script>
+
+</body>
+
+</html>

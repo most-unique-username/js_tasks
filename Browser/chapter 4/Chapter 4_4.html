@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #prompt-form {
+      display: inline-block;
+      padding: 5px 5px 5px 70px;
+      width: 200px;
+      border: 1px solid black;
+      background: white url(https://en.js.cx/clipart/prompt.png) no-repeat left 5px;
+      vertical-align: middle;
+    }
+
+    #prompt-form-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    #prompt-form-container:before {
+      display: inline-block;
+      height: 100%;
+      content: "";
+      vertical-align: middle;
+    }
+
+    #prompt-form input[name="text"] {
+      display: block;
+      margin: 5px;
+      width: 180px;
+    }
+
+    #cover-div {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9000;
+      width: 100%;
+      height: 100%;
+      background-color: gray;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Кликните на кнопку ниже</h2>
+
+  <input type="button" value="Кликните, чтобы увидеть форму" id="showButton">
+
+  <div id="prompt-form-container">
+    <form id="prompt-form">
+      <div id="prompt-message">Введите что-нибудь...
+        <br>Пожалуйста..
+      </div>
+      <input name="text" type="text">
+      <input type="submit" value="Ok">
+      <input type="button" name="cancel" value="Отмена">
+    </form>
+  </div>
+
+  <script>
+    let conteiner = document.getElementById("prompt-form-container");
+    let form = document.getElementById("prompt-form");
+    let prompt_message = document.getElementById("prompt-message");
+    conteiner.hidden = true;
+
+    function showPrompt(html, callback) {
+      showCover();
+      conteiner.hidden = false;
+      form.text.focus();
+      prompt_message.innerText = html;
+      form.addEventListener("submit", (event) => { event.preventDefault(); complete(callback, form.text.value); });
+      document.addEventListener("keydown", (event) => { if (event.key == "Escape") complete(callback); });
+      form.cancel.addEventListener("click", () => complete(callback));
+    }
+
+    function showCover() {
+      let coverDiv = document.createElement("div");
+      coverDiv.id = "cover-div";
+      document.body.style.overflowY = "hidden";
+      document.body.append(coverDiv);
+    }
+
+    function hideCover() {
+      document.getElementById("cover-div").remove();
+      document.body.style.overflowY = "";
+    }
+
+    function complete(callback, value = null) {
+      hideCover();
+      callback(value);
+      conteiner.hidden = true;
+    }
+
+    form.text.onkeydown = function (event) {
+      if (event.key == 'Tab' && event.shiftKey) {
+        form.cance.focus();
+        return false;
+      }
+    };
+
+    form.cancel.onkeydown = function (event) {
+      if (event.key == 'Tab' && !event.shiftKey) {
+        form.text.focus();
+        return false;
+      }
+    };
+
+    showButton.addEventListener("click", () => showPrompt("Введите что-нибудь", function (value) { alert("Вы ввели: " + value); }));
+    let b = 0;
+  </script>
+
+</body>
+
+</html>

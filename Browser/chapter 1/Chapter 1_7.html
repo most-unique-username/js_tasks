@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <style>
+    .btn {
+      border: 2px solid gray;
+      padding: 2px;
+    }
+
+    .btn:hover {
+      border-color: black;
+    }
+
+    .time {
+      padding: 4px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .hour {
+      color: green;
+    }
+
+    .minute {
+      color: red;
+    }
+
+    .second {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="time"><span class="hour">hh</span>:<span class="minute">mm</span>:<span class="second">ss</span></div>
+  <form action="">
+    <botton class="btn" onclick="clockStart()">Start</botton>
+    <botton class="btn" onclick="clockStop()">Stop</botton>
+  </form>
+
+  <div class="calendar"></div>
+
+  <ul class="list"></ul>
+
+  <ul id="ul">
+    <li id="one">1</li>
+    <li id="two">4</li>
+  </ul>
+
+  <ul class="animal">
+    <li>Животные
+      <ul>
+        <li>Млекопитающие
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li>Другие
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Рыбы
+      <ul>
+        <li>Аквариумные
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+        </li>
+        <li>Морские
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <table class="person">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Smith</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Pete</td>
+        <td>Brown</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <td>Ann</td>
+        <td>Lee</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Задача 1   -->
+  <script>
+    elem.append(document.createTextNode(text))//игнорируются теги
+    elem.innerHTML = text//вставка с учетом тегов
+    elem.textContent = text//игнорируются теги
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    function clear(elem) {
+      elem.innerHTML = ""
+    }
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    alert(table);//таблица, как и должно быть
+    table.remove();// ааа остается, т.к. находится не на своем месте и оказывается за пределами удаленной таблицы
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    let ul = document.querySelector(".list");
+    while (true) {
+      let answer = prompt("Текст: ", "");
+      if (!answer) break;
+      let li = document.createElement("li");
+      li.append(answer);
+      ul.append(li);
+    }
+  </script>
+
+  <!-- Задача 5   -->
+  <script>
+    function createTree(container, data) {
+      let data_keys = Object.keys(data);
+
+      if (data_keys.length > 0) {
+        let ul = document.createElement("ul");
+        container.append(ul);
+
+        for (let key of data_keys) {
+          let li = document.createElement("li");
+          li.insertAdjacentText("beforeend", key)
+          ul.append(li);
+          let key_keys = Object.keys(data[key]);
+          if (key_keys.length > 0) createTree(li, data[key]);
+        }
+      }
+    }
+  </script>
+
+  <!-- Задача 6   -->
+  <script>
+    let animal_list = document.querySelector(".animal");
+    let ul_children = animal_list.getElementsByTagName('li');
+
+    for (let child of ul_children) {
+      let counter = child.getElementsByTagName('li').length;
+      if (!counter) continue;
+      child.firstChild.data += ` [${counter}]`;
+    }
+  </script>
+
+  <!-- Задача 7   -->
+  <script>
+    function createCalendar(elem, year, month) {
+      let week = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"]
+      let first_day = new Date(year, month - 1, 1);
+      let week_day_number = first_day.getDay();
+      week_day_number == 0 ? 7 : week_day_number;
+      let last_day = new Date(year, month, 0);
+      let days_number = last_day.getDate();
+      let table = document.createElement("table");
+      let tr_week_day = document.createElement("tr");
+      table.append(tr_week_day);
+
+      for (let week_day of week) {
+        let th = document.createElement("th");
+        th.insertAdjacentText("afterbegin", week_day);
+        tr_week_day.append(th);
+      }
+
+      let tr = document.createElement("tr");
+      let empty_cell = week_day_number - 1;
+
+      for (let i = 0; i < empty_cell; i++) {
+        let td = document.createElement("td");
+        td.insertAdjacentText("afterbegin", "");
+        tr.append(td);
+      }
+
+      table.append(tr);
+
+      for (let i = 1; i <= days_number; i++) {
+        let td = document.createElement("td");
+        td.insertAdjacentText("afterbegin", i);
+        tr.append(td);
+
+        if (week_day_number == 7) {
+          tr = document.createElement("tr");
+          table.append(tr);
+          week_day_number = 0;
+        }
+
+        week_day_number++;
+      }
+
+      elem.append(table);
+    }
+
+    let div_calendar = document.querySelector(".calendar");
+    createCalendar(div_calendar, 2023, 3);
+  </script>
+
+  <!-- Задача 8   -->
+  <script>
+    function createTime(hour_box, minute_box, second_box) {
+      let now = new Date();
+      let hour = now.getHours();
+      hour < 10 ? hour = "0" + hour : hour = hour;
+      let minute = now.getMinutes();
+      minute < 10 ? minute = "0" + minute : minute = minute;
+      let second = now.getSeconds();
+      second < 10 ? second = "0" + second : second = second;
+      hour_box.innerHTML = hour;
+      minute_box.innerHTML = minute;
+      second_box.innerHTML = second;
+    }
+
+    let hour_box = document.querySelector(".hour");
+    let minute_box = document.querySelector(".minute");
+    let second_box = document.querySelector(".second");
+    let timer;
+
+    function clockStart() {
+      timer = setInterval(() => createTime(hour_box, minute_box, second_box), 1000);
+    }
+
+    function clockStop() {
+      clearInterval(timer);
+    }
+  </script>
+
+  <!-- Задача 9   -->
+  <script>
+    let one = document.getElementById("one");
+    one.insertAdjacentHTML("afterend", "<li>2</li><li>3</li>");
+  </script>
+
+  <!-- Задача 10  -->
+  <script>
+    let table_person = document.querySelector(".person");
+    let thead = table_person.firstElementChild;
+    let tbody = table_person.lastElementChild;
+    let person = [];
+    let person_box = tbody.children;
+    let property = [];
+    let property_table = thead.firstElementChild.children;
+
+    for (let prop of property_table) {
+      property.push(prop.textContent.toLowerCase());
+    }
+
+    for (let i = 0; i < person_box.length; i++) {
+      let person_property = person_box[i].children;
+      let person_obj = {};
+
+      for (let j = 0; j < person_property.length; j++) {
+        person_obj[property[j]] = person_property[j].textContent;
+        let a = 0;
+      }
+
+      person.push(person_obj);
+    }
+
+    person.sort((a, b) => a.name > b.name ? 1 : -1);
+
+    for (let i = 0; i < person_box.length; i++) {
+      person_box[i].innerHTML = `<td>${person[i].name}</td><td>${person[i].surname}</td><td>${person[i].age}</td>`
+    }
+  </script>
+
+</body>
+
+</html>

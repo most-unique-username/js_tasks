@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font: 75%/120% sans-serif;
+    }
+
+    #largeImg {
+      border: solid 1px #ccc;
+      width: 550px;
+      height: 400px;
+      padding: 5px;
+    }
+
+    #thumbs a {
+      border: solid 1px #ccc;
+      width: 100px;
+      height: 100px;
+      padding: 3px;
+      margin: 2px;
+      float: left;
+    }
+
+    #thumbs a:hover {
+      border-color: #FF9900;
+    }
+
+    #thumbs li {
+      list-style: none;
+    }
+
+    #thumbs {
+      margin: 0;
+      padding: 0;
+    }
+
+    #contents {
+      padding: 5px;
+      border: 1px green solid;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p><img id="largeImg" src="https://en.js.cx/gallery/img1-lg.jpg" alt="Large image"></p>
+
+  <ul id="thumbs">
+    <!-- браузер показывает небольшую встроенную подсказку из атрибута "title" при наведении курсора на текст -->
+    <li>
+      <a href="https://en.js.cx/gallery/img2-lg.jpg" title="Image 2"><img
+          src="https://en.js.cx/gallery/img2-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img3-lg.jpg" title="Image 3"><img
+          src="https://en.js.cx/gallery/img3-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img4-lg.jpg" title="Image 4"><img
+          src="https://en.js.cx/gallery/img4-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img5-lg.jpg" title="Image 5"><img
+          src="https://en.js.cx/gallery/img5-thumb.jpg"></a>
+    </li>
+    <li>
+      <a href="https://en.js.cx/gallery/img6-lg.jpg" title="Image 6"><img
+          src="https://en.js.cx/gallery/img6-thumb.jpg"></a>
+    </li>
+  </ul>
+
+  <fieldset id="contents">
+    <legend>#contents</legend>
+    <p>
+      Как насчёт того, чтобы прочитать <a href="https://wikipedia.org">Википедию</a> или посетить <a
+        href="https://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+    </p>
+  </fieldset>
+
+  <a href="https://w3.org" onclick="handler(event)">браузер откроет w3.org</a>
+
+  <!-- Задача 1   -->
+  <script>
+    function handler(event) {
+      alert("...");
+      event.preventDefault();
+    }
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    contents.onclick = function (event) {
+      let link = event.target.closest("a");
+      if (!link) return;
+      if (!contents.contains(link)) return;
+      let answer = confirm(`Leave for ${link.getAttribute("href")}`);
+      if (!answer) event.preventDefault();
+    };
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    thumbs.onclick = function (event) {
+      let link = event.target.closest("a");
+      if (link && thumbs.contains(link)) {
+        let a = largeImg;
+        largeImg.src = link.href;
+        event.preventDefault();
+      }
+    };
+  </script>
+
+</body>
+
+</html>
