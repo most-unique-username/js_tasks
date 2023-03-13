@@ -5,29 +5,7 @@
   <meta charset="utf-8">
 </head>
 
-<body>
-
-  <!-- Задача 1   -->
-  <script>
-    let animal = {
-      jumps: null
-    };
-
-    let rabbit = {
-      __proto__: animal,
-      jumps: true
-    };
-
-    alert(rabbit.jumps);//true
-
-    delete rabbit.jumps;
-
-    alert(rabbit.jumps);//null
-
-    delete animal.jumps;
-
-    alert(rabbit.jumps);//undefined
-  </script>
+<body>  
 
   <!-- Задача 2   -->
   <script>
@@ -50,24 +28,7 @@
       money: 2000,
       __proto__: bed,
     };
-  </script>
-
-  <!-- Задача 3   -->
-  <script>
-    {
-      let animal = {
-        eat() {
-          this.full = true;
-        }
-      };
-
-      let rabbit = {
-        __proto__: animal
-      };
-
-      rabbit.eat();//rabbit
-    }
-  </script>
+  </script> 
 
   <!-- Задача 4   -->
   <script>
