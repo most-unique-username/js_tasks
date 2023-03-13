@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function spy(func) {
+      function wrapper(...arguments) {
+        wrapper.calls.push(arguments);
+        return func.apply(this, arguments);
+      };
+      wrapper.calls = [];
+      return wrapper;
+    }
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    function delay(f, ms) {
+      return function (str) {
+        setTimeout(f, ms, str);
+      };
+    }
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    function debounce(func, ms) {
+      let function_time = true;
+      return function () {
+
+        if (function_time) {
+          func.call(this, ...arguments);
+          function_time = false;
+          setTimeout(() => function_time = true, ms);
+        }
+      };
+    }
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    function throttle(func, ms) {
+      let function_time = true;
+      let last_argument = null;
+      let contecst = null;
+
+      function wrapper(arg) {
+        if (function_time) {
+          func.call(this, arg);
+          function_time = false;
+          setTimeout(function () {
+            function_time = true;
+            wrapper.call(contecst, last_argument);
+            last_argument = null;
+            contecst = null;
+          }, ms);
+        }
+        else {
+          last_argument = arg;
+          contecst = this;
+        }
+      };
+      return wrapper;
+    }
+  </script>
+
+</body>
+
+</html>

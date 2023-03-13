@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function f() {
+      alert(this); // ?
+    }
+
+    let user = {
+      g: f.bind(null)
+    };
+
+    user.g();//null
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    function f() {
+      alert(this.name);
+    }
+
+    f = f.bind({ name: "Вася" }).bind({ name: "Петя" });
+
+    f();//Петя нет Вася!!!
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    function sayHi() {
+      alert(this.name);
+    }
+    sayHi.test = 5;
+
+    let bound = sayHi.bind({
+      name: "Вася"
+    });
+
+    alert(bound.test);//5 нет undefined!!!
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    {
+      function askPassword(ok, fail) {
+        let password = prompt("Password?", '');
+        if (password == "rockstar") ok();
+        else fail();
+      }
+
+      let user = {
+        name: 'Вася',
+
+        loginOk() {
+          alert(`${this.name} logged in`);
+        },
+
+        loginFail() {
+          alert(`${this.name} failed to log in`);
+        },
+
+      };
+
+      askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+    }
+  </script>
+
+  <!-- Задача 5   -->
+  <script>
+    {
+      function askPassword(ok, fail) {
+        let password = prompt("Password?", '');
+        if (password == "rockstar") ok();
+        else fail();
+      }
+
+      let user = {
+        name: 'John',
+
+        login(result) {
+          alert(this.name + (result ? ' logged in' : ' failed to log in'));
+        }
+      };
+
+      askPassword(user.login.bind(user, true), user.login.bind(user, false));
+    }
+  </script>
+
+</body>
+
+</html>

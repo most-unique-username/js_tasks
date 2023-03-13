@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function makeCounter() {
+      let count = 0;
+
+      return function counter() {
+        counter.set = function (value) {
+          count = value;
+        };
+
+        counter.decrease = function () {
+          count--;
+        };
+        return count++;
+      };
+    }
+
+    function makeCounterProperty() {
+
+      function counter() {
+
+        counter.set = function (value) {
+          counter.count = value;
+        };
+
+        counter.decrease = function () {
+          counter.count--;
+        };
+
+        return counter.count++;
+      };
+      counter.count = 0;
+      return counter;
+    }
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    function sum(a) {
+      function summa(b) {
+        sum.sum += b;
+        return summa;
+      };
+
+      summa.toString = function () {
+        return sum.sum;
+      };
+
+      sum.sum = a;
+      return summa;
+    }
+  </script>
+
+</body>
+
+</html>

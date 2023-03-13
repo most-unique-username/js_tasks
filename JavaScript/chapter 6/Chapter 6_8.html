@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function printNumbersTimeoutRecursion(from, to) {
+      setTimeout(() => alert(from), 1000);
+      if (from != to) printNumbersTimeout(from + 1, to);
+    }
+
+    function printNumbersTimeout(from, to) {
+      let number = from;
+      setTimeout(function timeout() {
+        alert(number);
+        if (number < to) setTimeout(timeout, 1000);
+        number++;
+      }, 1000);
+    }
+
+    function printNumbersInterval(from, to) {
+      let number = from;
+      let interval = setInterval(function () {
+        alert(number);
+        if (number == to) setTimeout(() => clearInterval(interval));
+        number++;
+      }, 1000);
+    }
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    let i = 0;
+
+    setTimeout(() => alert(i), 100);//после цикла "100000000"
+
+    //предположим, что время выполнения этой функции >100 мс
+    for (let j = 0; j < 100000000; j++) {
+      i++;
+    }
+  </script>
+
+</body>
+
+</html>

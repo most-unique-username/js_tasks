@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function makeCounter() {
+      let count = 0;
+
+      return function () {
+        return count++;
+      };
+    }
+
+    let counter = makeCounter();
+    let counter2 = makeCounter();
+
+    alert(counter());//0
+    alert(counter());//1
+
+    alert(counter2());//0
+    alert(counter2());//1
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    {
+      function Counter() {
+        let count = 0;
+
+        this.up = function () {
+          return ++count;
+        };
+        this.down = function () {
+          return --count;
+        };
+      }
+
+      let counter = new Counter();
+
+      alert(counter.up());//1
+      alert(counter.up());//2
+      alert(counter.down());//1
+    }
+  </script>
+
+  <!-- Задача 3   -->
+  <script>
+    let phrase = "Hello";
+
+    if (true) {
+      let user = "John";
+
+      function sayHi() {
+        alert(`${phrase}, ${user}`);
+      }
+    }
+
+    sayHi();//ошибка
+  </script>
+
+  <!-- Задача 4   -->
+  <script>
+    function sum(a) {
+      return function (b) {
+        return a + b;
+      }
+    }
+
+    let a = sum(1)(2)// = 3
+    a = sum(5)(-1)// = 4
+  </script>
+
+  <!-- Задача 5   -->
+  <script>
+    function inBetween(a, b) {
+      return function (item) {
+        return item >= a && item <= b;
+      }
+    }
+
+    function inArray(arr) {
+      return function (item) {
+        return arr.includes(item);
+      }
+    }
+  </script>
+
+  <!-- Задача 6   -->
+  <script>
+    function byField(fieldName) {
+      return function (a, b) {
+        return a[fieldName] > b[fieldName] ? 1 : -1
+      }
+    }
+  </script>
+
+  <!-- Задача 7   -->
+  <script>
+    function makeArmy() {
+      let shooters = [];
+
+      let i = 0;
+      while (i < 10) {
+        let j = i;
+        let shooter = function () { // функция shooter
+          alert(j); // должна выводить порядковый номер
+        };
+        shooters.push(shooter);
+        i++;
+      }
+
+      return shooters;
+    }
+
+    let army = makeArmy();
+
+    army[0]();//0
+    army[5]();//5
+  </script>
+
+</body>
+
+</html>

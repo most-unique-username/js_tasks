@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <!-- Задача 1   -->
+  <script>
+    function Rabbit() { }
+    Rabbit.prototype = {
+      eats: true
+    };
+
+    let rabbit = new Rabbit();
+
+    Rabbit.prototype = {};
+    alert(rabbit.eats);//true
+
+    Rabbit.prototype.eats = false;
+    alert(rabbit.eats);//false
+
+    delete rabbit.eats;
+    alert(rabbit.eats);//true
+
+    delete Rabbit.prototype.eats;
+    alert(rabbit.eats);//undefined
+  </script>
+
+  <!-- Задача 2   -->
+  <script>
+    function Obj() { }
+
+    let obj = new Obj();
+
+    let obj2 = new obj.constructor();//будет работать
+
+    Obj.prototype = {
+      some_property: "some_value",
+    };
+
+    let obj3 = new obj.constructor();//не будет работать
+  </script>
+
+</body>
+
+</html>
